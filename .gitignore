@@ -21,3 +21,9 @@
 /yarn-error.log
 
 .byebug_history
+
+# Ignore Mac files
+.DS_Store
+
+# Ignore rbenv version file
+.ruby-version
