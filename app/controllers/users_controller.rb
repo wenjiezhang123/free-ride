@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def user_params
+    params.require(:user).permit(:name, :nickname, :password, :email, :phone, :is_driver?)
+  end
+
   def index
   end
 
@@ -19,10 +23,13 @@ class UsersController < ApplicationController
   def destroy
   end
 
+  # register a new user
   def create
-    p 1
-    p params
-    # @user = User.create(params[:user])
-    # render :status => :ok
+    @user = User.create(user_params)
+    if @user.valid?
+      render :json => {:data => @user, :status => 200}
+    else
+      render :json => {:data => nil, :status => 200}
+    end
   end
 end
