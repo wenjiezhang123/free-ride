@@ -1,8 +1,5 @@
-class User < ActiveRecord
-  validates :name, :nickname, :email, :phone, :is_driver?, presence: true
-
-  def register
-  end
+class User < ApplicationRecord
+  validates :name, :nickname, :email, :phone, :is_driver?, :password presence: true
 
   def change_status
   end
