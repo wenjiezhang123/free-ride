@@ -6,5 +6,11 @@ using ruby version >= 2.4
 
 ## installation
 
+```
 gem install bundler
 bundle install
+```
+
+the front-end uses `webpacker` to manage modules
+
+and uses framework `vuejs`
