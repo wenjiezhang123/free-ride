@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
@@ -25,11 +26,19 @@ class UsersController < ApplicationController
 
   # register a new user
   def create
+    @email_existed = !User.find_by(email: "#{params[:user][:email]}").nil?
+    #@nickname_existed = !User.find_by(nickname: "#{params[:user][:nickname]}").nil?
     @user = User.create(user_params)
-    if @user.valid?
-      render :json => {:data => @user, :status => 200}
+    
+    if @user.valid? && !@email_existed #&& !@nickname_existed
+      render :json => {:data => @user, :status => 200, :email_already_exist => @email_existed } #:nickname_already_exist => @nickname_existed}
+    elsif @user.valid?
+      @user.destroy
+      render :json => {:data => @user, :status => 200, :email_already_exist => @email_existed } #:nickname_already_exist => @nickname_existed }
     else
+      @user.destroy
       render :json => {:data => nil, :status => 200}
     end
   end
+  
 end
