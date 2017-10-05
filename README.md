@@ -17,3 +17,5 @@ the front-end side needs a bit more configuration
 the front-end uses `webpacker` to manage modules
 
 and uses framework `vuejs`
+
+test
