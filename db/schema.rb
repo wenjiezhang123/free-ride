@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 20171002222644) do
 
   create_table "messages", force: :cascade do |t|
-    t.string "sender"
-    t.string "receiver"
+    t.string "sender_id"
+    t.string "receiver_id"
     t.string "title"
     t.text "content"
     t.datetime "created_at", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20171002222644) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "driver"
+    t.string "driver_id"
     t.string "from"
     t.string "to"
     t.datetime "start_time"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20171002222644) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "nickname"
+    t.string "password"
     t.string "email"
     t.integer "phone"
     t.boolean "is_driver?"

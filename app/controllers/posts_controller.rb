@@ -20,5 +20,6 @@ class PostsController < ApplicationController
       render :json => {:data => @post, :status => 200}
     else
       render :json => {:data => nil, :status => 200}
+    end
   end
 end
