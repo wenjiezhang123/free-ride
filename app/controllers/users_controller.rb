@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     
     if @user.valid? && !@email_existed #&& !@nickname_existed
+      log_in @user
       render :json => {:data => @user, :status => 200, :email_already_exist => @email_existed } #:nickname_already_exist => @nickname_existed}
     elsif @user.valid?
       @user.destroy
