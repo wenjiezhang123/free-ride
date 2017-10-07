@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:edit, :update, :change_status]
+  before_action :correct_user, only: [:edit, :update, :change_status]
   
 
   def user_params
@@ -8,6 +8,17 @@ class UsersController < ApplicationController
   end
 
   def index
+  end
+  
+  def change_status
+    @user = User.find(params[:id])
+    
+    if @user.valid?
+      @user.update_attributes(user_params)
+      render :json => { :updated? => true, :status => 200, :message => "Status has been changed", :data => @user}
+    else
+      render :json => {:data => nil, :status => 200}
+    end
   end
 
   def new
@@ -21,14 +32,23 @@ class UsersController < ApplicationController
   end
 
   def update
-    @email_existed = !User.find_by(email: "#{params[:user][:email]}").nil?
+    if !User.find_by(email: "#{params[:user][:email]}").nil?
+      if params[:id] != User.find_by(email: "#{params[:user][:email]}").id.to_s
+        @email_existed = true
+      end
+    else
+      @email_existed = false
+    end
+    
     @user = User.find(params[:id])
     
     if @user.valid? && !@email_existed
       @user.update_attributes(user_params)
-      render :json => { :updated? => true, :status => 200, :message => "Successful update!", :data => @user}
+      render :json => { :updated? => true, :status => 200, :message => "Successful update!", :data => @user }
+    elsif @user.valid?
+      render :json => { :updated? => false, :status => 200, :message => "Email entered has been used!", :data => @user }
     else
-      render :json => { :updated? => false, :status => 200, :message => "Email entered has been used!", :data => @user}
+      render :json => { :data => nil, :status => 200, :message => "Invalid user id!" }
     end
   end
 
@@ -43,13 +63,13 @@ class UsersController < ApplicationController
     
     if @user.valid? && !@email_existed #&& !@nickname_existed
       log_in @user
-      render :json => {:data => @user, :status => 200, :email_already_exist => @email_existed } #:nickname_already_exist => @nickname_existed}
+      render :json => {:data => @user, :status => 200, :email_already_exist => @email_existed, :message => "Successful sign up!" } #:nickname_already_exist => @nickname_existed}
     elsif @user.valid?
       @user.destroy
-      render :json => {:data => @user, :status => 200, :email_already_exist => @email_existed } #:nickname_already_exist => @nickname_existed }
+      render :json => {:data => @user, :status => 200, :email_already_exist => @email_existed, :message => "Email entered has been used!" } #:nickname_already_exist => @nickname_existed }
     else
       @user.destroy
-      render :json => {:data => nil, :status => 200}
+      render :json => {:data => nil, :status => 200 }
     end
   end
   

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create' 
   delete '/logout', to: 'sessions#destroy'
+  patch '/change_status/:id', to: 'users#change_status'
 
   resources :users
   resources :posts
