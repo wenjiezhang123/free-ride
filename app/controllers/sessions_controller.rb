@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email]) 
     if user && (user.password == params[:session][:password])
       log_in user
-      render :json => {:is_login? => true,:status => 200, :message => "Successful log in!"}
+      render :json => {:is_login? => true,:status => 200, :message => "Successful log in!", :data => user}
     else
       render :json => {:is_login? => false, :status => 200, :message => "Invalid email/password combination!"}
     end
