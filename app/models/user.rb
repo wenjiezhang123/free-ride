@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   validates :name, :nickname, :email, :phone, :is_driver?, :password, presence: true
 
-  def change_status
+  def change_status(user)
   end
 end
