@@ -18,4 +18,7 @@ the front-end uses `webpacker` to manage modules
 
 and uses framework `vuejs`
 
-test
+## Notes
+right now, the integration of front-end framewrok has not completed yet.
+
+so this branch is a backup plan for now.
