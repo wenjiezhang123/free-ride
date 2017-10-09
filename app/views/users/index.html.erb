@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register</title>
+    <%= csrf_meta_tags %>
+
+  </head>
+
+  <body>
+    <h1 class="ui header centered">Registration</h1>
+    <div class="ui three column grid">
+      <div class="four wide column"> </div>
+      <div class="eight wide column">
+        <form class="ui form">
+          <div class="field">
+            <label>First Name</label>
+            <input type="text" name="first-name" placeholder="First Name">
+          </div>
+          <div class="field">
+            <label>Last Name</label>
+            <input type="text" name="last-name" placeholder="Last Name">
+          </div>
+          <div class="field">
+            <label>Gender</label>
+            <div class="ui radio checkbox">
+              <input type="radio" name="fruit" checked="" tabindex="0" class="hidden">
+              <label>Female</label>
+            </div>
+            <div class="ui radio checkbox">
+              <input type="radio" name="fruit" tabindex="0" class="hidden">
+              <label>Male</label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Nickname</label>
+            <input type="text" name="last-name" placeholder="Last Name">
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="text" name="last-name" placeholder="Last Name">
+          </div>
+          <div class="field">
+            <label>E-mail</label>
+            <input type="text" name="last-name" placeholder="Last Name">
+          </div>
+          <div class="field">
+            <label>Phone</label>
+            <input type="text" name="last-name" placeholder="Last Name">
+          </div>
+          <div class="field">
+            <div class="ui checkbox">
+              <input type="checkbox" tabindex="0" class="hidden">
+              <label>I agree to the Terms and Conditions</label>
+            </div>
+          </div>
+          <button class="ui button" type="submit">Register</button>
+        </form>
+      </div>
+      <div class="four wide column"> </div>
+    </div>
+  </body>
+</html>

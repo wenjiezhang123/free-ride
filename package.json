@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^3.0.1",
+    "semantic-ui": "^2.2.13",
     "vue": "^2.4.4",
     "vue-loader": "^13.0.5",
     "vue-template-compiler": "^2.4.4"

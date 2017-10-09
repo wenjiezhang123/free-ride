@@ -54,4 +54,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # webpack
-gem 'webpacker', '~> 3.0'
+# gem 'webpacker', '~> 3.0'
