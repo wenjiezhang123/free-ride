@@ -1,2 +1,29 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Login</title>
+    <%= csrf_meta_tags %>
+
+  </head>
+
+  <body>
+    <h1 class="ui header centered">Login</h1>
+    <div class="ui three column grid">
+      <div class="four wide column"> </div>
+      <div class="eight wide column">
+        <form class="ui form">
+          <div class="field">
+            <label>E-mail</label>
+            <input type="text" name="last-name" placeholder="Last Name">
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="text" name="last-name" placeholder="Last Name">
+          </div>
+          <button class="ui button" type="submit">Log in</button>
+        </form>
+      </div>
+      <div class="four wide column"> </div>
+    </div>
+  </body>
+</html>

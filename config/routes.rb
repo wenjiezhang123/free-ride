@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
   root 'welcome#index'
-  
+
   get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create' 
+  post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   patch '/change_status/:id', to: 'users#change_status'
 
